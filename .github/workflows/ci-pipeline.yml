@@ -3,6 +3,7 @@ name: Python CI Pipeline
 on:
   push:
     branches: ["main", "feat/*"]
+    tags: ["v*.*.*"]
   pull_request:
     branches: ["main"]
 
@@ -117,8 +118,11 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-            type=ref,event=branch
-            type=sha
+            type=sha,prefix=,format=short 
+            type=ref,event=branch 
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            tyoe=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push
         uses: docker/build-push-action@v6
