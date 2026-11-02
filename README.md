@@ -1,4 +1,4 @@
-# CI/CD Pipeline Demo
+# Shipyard
 
 > A production-grade CI/CD pipeline built with GitHub Actions and Docker, demonstrating deliberate architectural decisions across automated testing, container security, and artifact traceability.
 
